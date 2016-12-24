@@ -37,12 +37,16 @@ class C3Chart extends React.Component {
       donut: React.PropTypes.object,
       gauge: React.PropTypes.object,
       className: React.PropTypes.string,
-      style: React.PropTypes.object
+      style: React.PropTypes.object,
+      focusId : React.PropTypes.string,
     };
   }
 
   componentDidMount() {
     this.updateChart(this.props);
+    if (this.props.focusId) {
+      this.focus(this.props.focusId)
+    }
   }
 
   componentWillReceiveProps(newProps) {
@@ -60,6 +64,10 @@ class C3Chart extends React.Component {
 
   loadNewData(data) {
     this.chart.load(data);
+  }
+
+  focus(id) {
+    this.chart.focus(id)
   }
 
   updateChart(config) {
