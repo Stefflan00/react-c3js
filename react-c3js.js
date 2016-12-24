@@ -37,6 +37,9 @@ var C3Chart = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       this.updateChart(this.props);
+      if (this.props.focusId) {
+        this.focus(this.props.focusId);
+      }
     }
   }, {
     key: 'componentWillReceiveProps',
@@ -58,6 +61,11 @@ var C3Chart = function (_React$Component) {
     key: 'loadNewData',
     value: function loadNewData(data) {
       this.chart.load(data);
+    }
+  }, {
+    key: 'focus',
+    value: function focus(id) {
+      this.chart.focus(id);
     }
   }, {
     key: 'updateChart',
@@ -120,7 +128,8 @@ var C3Chart = function (_React$Component) {
         donut: _react2.default.PropTypes.object,
         gauge: _react2.default.PropTypes.object,
         className: _react2.default.PropTypes.string,
-        style: _react2.default.PropTypes.object
+        style: _react2.default.PropTypes.object,
+        focusId: _react2.default.PropTypes.string
       };
     }
   }]);
